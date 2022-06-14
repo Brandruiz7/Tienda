@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Tech Shop</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        <h2>Datos del cliente</h2>
+        <a th:href="@{/}">Regresar</a>
+        <br>
+        <br>
+        <!-- Definir el submit como post para poder guardar los datos -->
+        <form th:action="@{/guardarCliente}" method="POST"
+              th:object="${cliente}">
+            <input type="hidden" name="idCliente" th:field="*{idCliente}">
+            <label for="nombre">Nombre: </label>
+            <input type="text" id="nombre" name="nombre" th:field="*{nombre}">
+            <br>
+            <label for="apellido">Apellido: </label>
+            <input type="text" id="apellido" name="apellido" th:field="*{apellidos}">
+            <br>
+            <label for="correo">Correo: </label>
+            <input type="text" id="correo" name="correo" th:field="*{correo}">
+            <br>
+            <label for="telefono">Teléfono: </label>
+            <input type="text" id="telefono" name="telefono" th:field="*{telefono}">
+            <br>
+            <input type="submit" name="guardar" value="Guardar">
+        </form>        
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </body>
+</html>

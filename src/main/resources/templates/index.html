@@ -13,24 +13,44 @@
         <p>Teléfono: <span th:text="$(cliente.telefono)"></span></p>
         <br>
         <br>-->
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Correo</th>
-                    <th>Teléfono</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- th:each="item: ${lista}"-->
-                <tr th:each="item : ${clientes}">
-                    <td th:text="${item.nombre}"></td>
-                    <td th:text="${item.apellidos}"></td>
-                    <td th:text="${item.correo}"></td>
-                    <td th:text="${item.telefono}"></td>
-                </tr>
-            </tbody>
-        </table>
+        <header th:replace="layout/plantilla :: header"></header>
+        <h2>Lista de Clientes</h2>
+        <a th:href="@{/nuevoCliente}">Nuevo Cliente</a>
+        <br>
+        <br>
+        <!-- Regular los datos para que aparezca sí y solo sí no es nula 
+             ni vacía El # es cuando es una propiedad del model
+             el @ es una acción una redirección o algo
+             el $ es para un mapeo buscar o usar algo dentro de un objeto.-->
+        <div th:if="${clientes != null and !clientes.empty}">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Modificar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- th:each="item: ${lista}"-->
+                    <tr th:each="item : ${clientes}">
+                        <td th:text="${item.nombre}"></td>
+                        <td th:text="${item.apellidos}"></td>
+                        <td th:text="${item.correo}"></td>
+                        <td th:text="${item.telefono}"></td>                       
+                        <td><a th:href="@{/modificarCliente/} + ${item.idCliente}">Modificar</a></td>
+                        <td><a th:href="@{/eliminarCliente/} + ${item.idCliente}">Eliminar</a></td>
+                    </tr>
+                </tbody>
+            </table>    
+        </div>
+        <!-- Regular los datos para que aparezca sí y solo sí es nula o vacía -->
+        <div th:if="${clientes == null or clientes.empty}">
+            <p>No tenemos lista de clientes</p>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"></footer>        
     </body>
 </html>
