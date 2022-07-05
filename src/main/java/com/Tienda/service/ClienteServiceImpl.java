@@ -7,8 +7,10 @@
  */
 package com.Tienda.service;
 
-import com.Tienda.ClienteDao.ClienteDao;
+import com.Tienda.dao.ClienteDao;
+import com.Tienda.dao.CreditoDao;
 import com.Tienda.domain.Cliente;
+import com.Tienda.domain.Credito;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,9 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     private ClienteDao clienteDao;
+    
+    @Autowired
+    private CreditoDao creditoDao;
 
     //Los que son de lectura @Transactional(readOnly = true) y sino normal.
     
@@ -52,7 +57,10 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     @Transactional
     public void save(Cliente cliente) {
-        clienteDao.save(cliente);
+        Credito credito= cliente.getCredito(); //Se extrae el dato de la base
+        credito = creditoDao.save(credito); // Si no tiene crea uno y guarda
+        cliente.setCredito(credito); // Se actualiza el dato.
+        clienteDao.save(cliente); // Se guarda el dato del cliente.
     }
 
     /**

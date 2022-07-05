@@ -9,7 +9,6 @@ package com.Tienda.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
 import lombok.Data;
 
 /**
@@ -30,7 +29,29 @@ public class Cliente implements Serializable {
     String apellidos;
     String correo;
     String telefono;
+    
+    
+    //Se hace la referencia de id credito en la base de datos
+    @JoinColumn(name="id_credito", referencedColumnName = "id_credito")
+    @ManyToOne
+    private Credito credito;
 
+    /**
+     * Se agrega después de agregar o hacer referencia a credito.
+     * @param nombre
+     * @param apellidos
+     * @param correo
+     * @param telefono
+     * @param credito
+     */
+    public Cliente(String nombre, String apellidos, String correo, String telefono, Credito credito) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.credito = credito;
+    }
+    
     public Cliente() {
     }
 
