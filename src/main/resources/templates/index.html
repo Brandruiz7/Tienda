@@ -10,19 +10,14 @@
         <header th:replace="layout/plantilla :: header"></header>
 
         <div class="contenido">
-            <h2>Nuestros articulos</h2>
-            <br>
-            <br>
-            <!-- Regular los datos para que aparezca sí y solo sí no es nula 
-                 ni vacía El # es cuando es una propiedad del model
-                 el @ es una acción una redirección o algo
-                 el $ es para un mapeo buscar o usar algo dentro de un objeto.-->
+            <h2 th:text="#{index.titulo}">Nuestros articulos</h2>
             <div th:if="${articulos != null and !articulos.empty}">
                 <table border="1">
                     <thead>
                         <tr>
-                            <th>Descripción</th>
-                            <th>Precio</th>
+                            <th th:text="#{articulo.descripcion}">>Descripción</th>
+                            <th th:text="#{articulo.precio}">Precio</th>
+                            <th th:text="#{articulo.comprar}"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,14 +25,15 @@
                         <tr th:each="item : ${articulos}">
                             <td th:text="${item.descripcion}"></td>
                             <td th:text="${#numbers.formatDecimal(item.precio, 3, 2)}"></td> <!-- Minimo de enteros y ...-->
-                            <td><a th:href="@{/carrito/agregar/} +  ${item.idArticulo}">Agregar</a></td>
+                            <td><a th:href="@{/carrito/agregar/} +  ${item.idArticulo}"
+                                   th:text="#{accion.agregar}">Agregar</a></td>
                         </tr>
                     </tbody>
                 </table>    
             </div>
             <!-- Regular los datos para que aparezca sí y solo sí es nula o vacía -->
             <div th:if="${articulos == null or articulos.empty}">
-                <p>No tenemos lista de articulos</p>
+                <p th:text="#{articulo.no_mostrar}"></p>
             </div>
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>        
