@@ -25,7 +25,7 @@ public class TemplateResolverConfiguration {
         templateResolver.setPrefix("classpath:/templates");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setCharacterEncoding("UFT-8"); //Para carcateres especiales o Ñ
+        templateResolver.setCharacterEncoding("UTF-8"); //Para carcateres especiales o Ñ
         templateResolver.setOrder(0);
         templateResolver.setCheckExistence(true);
         return templateResolver;
@@ -37,7 +37,7 @@ public class TemplateResolverConfiguration {
         templateResolver.setPrefix("templates/categoria/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setCharacterEncoding("UFT-8"); //Para carcateres especiales o Ñ
+        templateResolver.setCharacterEncoding("UTF-8"); //Para carcateres especiales o Ñ
         templateResolver.setOrder(1);
         templateResolver.setCheckExistence(true);
         return templateResolver;
@@ -49,7 +49,7 @@ public class TemplateResolverConfiguration {
         templateResolver.setPrefix("templates/cliente/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setCharacterEncoding("UFT-8"); //Para carcateres especiales o Ñ
+        templateResolver.setCharacterEncoding("UTF-8"); //Para carcateres especiales o Ñ
         templateResolver.setOrder(2);
         templateResolver.setCheckExistence(true);
         return templateResolver;
@@ -61,7 +61,7 @@ public class TemplateResolverConfiguration {
         templateResolver.setPrefix("templates/articulo/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setCharacterEncoding("UFT-8"); //Para carcateres especiales o Ñ
+        templateResolver.setCharacterEncoding("UTF-8"); //Para carcateres especiales o Ñ
         templateResolver.setOrder(3);
         templateResolver.setCheckExistence(true);
         return templateResolver;
