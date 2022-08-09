@@ -21,11 +21,11 @@ import lombok.Data;
 public class Articulo implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idArticulo; // id_articulo
-    private Long idCategoria; //id_categoria
+    @Column(name = "id_articulo")
+    private Long idArticulo; //id_articulo    
+    private Long idCategoria; //id_categoria    
     private String descripcion;
     private String detalle;
     private double precio;
@@ -43,6 +43,4 @@ public class Articulo implements Serializable {
         this.existencias = existencias;
         this.activo = activo;
     }
-    
-    
 }
